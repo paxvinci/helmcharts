@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall
+  namespace: heimdall
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heimdall
+  template:
+    metadata:
+      labels:
+        app: heimdall
+    spec:
+      containers:
+        - name: heimdall
+          image: lscr.io/linuxserver/heimdall:latest  # L'immagine Docker ufficiale
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: heimdall-config
+              mountPath: /config
+      volumes:
+        - name: heimdall-config
+          emptyDir: {}
