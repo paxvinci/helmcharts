@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: heimdall-ingress
   namespace: heimdall
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
   - host: heimdall.home.lan  # Inserisci l'hostname corretto qui
@@ -15,7 +17,3 @@ spec:
             name: heimdall-service
             port:
               number: 80
-  tls:
-  - hosts:
-    - heimdall.home.lan  # Inserisci l'hostname corretto qui
-    secretName: heimdall-tls-secret
