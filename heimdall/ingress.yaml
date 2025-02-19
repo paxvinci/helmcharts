@@ -5,13 +5,17 @@ metadata:
   namespace: heimdall
 spec:
   rules:
-    - host: heimdall.home.lan
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: heimdall-service
-                port:
-                  number: 80
+  - host: heimdall.home.lan  # Inserisci l'hostname corretto qui
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: heimdall-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - heimdall.home.lan  # Inserisci l'hostname corretto qui
+    secretName: heimdall-tls-secret
