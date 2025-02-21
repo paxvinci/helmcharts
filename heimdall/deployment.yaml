@@ -19,3 +19,11 @@ spec:
         image: linuxserver/heimdall:latest
         ports:
         - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: heimdall-storage
+          mountPath: /config   # Questo è il percorso dove Heimdall salva i dati
+      volumes:
+      - name: heimdall-storage
+        persistentVolumeClaim:
+          claimName: heimdall-pvc
