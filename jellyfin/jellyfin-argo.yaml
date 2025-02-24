@@ -3,6 +3,7 @@ kind: Application
 metadata:
   name: jellyfin
 spec:
+  project: default
   destination:
     namespace: jellyfin
     server: https://192.168.1.12:6443
