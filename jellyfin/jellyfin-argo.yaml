@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+spec:
+  destination:
+    namespace: jellyfin
+    server: https://192.168.1.12:6443
+  source:
+    repoURL: "https://github.com/paxvinci/helmcharts.git"
+    path: "jellyfin"
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
