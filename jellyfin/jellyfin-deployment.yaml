@@ -22,11 +22,11 @@ spec:
             - mountPath: /config
               name: jellyfin-config
             - mountPath: /media
-              name: jellyfin-media
+              name: jellyfin-media  # Qui rimane invariato
       volumes:
         - name: jellyfin-config
           persistentVolumeClaim:
             claimName: jellyfin-config-pvc
         - name: jellyfin-media
           persistentVolumeClaim:
-            claimName: jellyfin-media-pvc
+            claimName: jellyfin-smb-pvc  # Modifica qui per fare riferimento al PVC SMB
